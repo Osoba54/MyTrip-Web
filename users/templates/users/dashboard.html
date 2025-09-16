@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <h2>Dashboard</h2>
+        {% if members %}
+        <table>
+            
+            {% for member in members %}
+            <tr>
+                <td>
+                    {{ member.get_full_name|default:member.username }}
+                </td>
+                <td>
+                    {{ member.email }}
+                </td>
+                <td>
+                    {{ member.first_name|default:"Nie podano" }}&nbsp;{{ member.last_name|default:"" }}
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        {% else %}
+            <p>Brak członków w tym zespole.</p>
+        {% endif %}
+    </body>
+</html>
